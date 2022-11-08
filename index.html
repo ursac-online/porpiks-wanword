@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut oriicon" href="114103677.ico" type="image/x-icon">
+
+    <script src="https://kit.fontawesome.com/067d14b27b.js" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>4 Pics 1 Word</title>
+</head>
+
+<body>
+    <!-- DIALOG -->
+    <div class="dialog" id="dialog">
+        <div class="dialog-container">
+            <div class="dialog-title">
+                <h1 class="game-title">4 PICS 1 WORD</h1>
+                <h1 class="welcome-dialog">Welcome, Player!</h1>
+            </div>
+            <form id="form" autocomplete="off">
+                <div class="dialog-content">
+                    <label for="" class="input-label">Enter your name <span>*</span></label>
+                    <div class="input-container">
+                        <input type="text" name="name" id="name" class="input-name" autofocus placeholder="Name">
+                        <i class="fa-solid fa-xmark" id="deleteNameBtn" ></i>
+                        <!-- clear -->
+                    </div>
+                    <label for="" class="input-label">Enter your email <span>*</span></label>
+
+                    <div class="input-container">
+                        <input type="text" name="email" id="email" class="input-name" autofocus placeholder="Email">
+                        <i class="fa-solid fa-xmark" id="deleteEmailBtn"></i>
+                        <!-- clear -->
+                    </div>
+                    <label for="" class="input-label">Enter your password <span>*</span></label>
+
+                    <div class="input-container">
+                        <input type="password" name="password" id="password" class="input-name" autofocus
+                            placeholder="Password">
+                        <i class="fa-solid fa-xmark" id="deletePasswordBtn" ></i>
+                        <!-- clear -->
+                    </div>
+                    <h6 class="error">Name is required <i class="fa-solid fa-circle-exclamation"></i></h6>
+                    <h6 class="error">Invalid name, please try again <i class="fa-solid fa-circle-exclamation"></i></h6>
+                    <h6 class="error">Email is required <i class="fa-solid fa-circle-exclamation"></i></h6>
+                    <h6 class="error">Invalid email address, must containt '@'. Ex: '@gmail.com' <i class="fa-solid fa-circle-exclamation"></i></h6>
+                    <h6 class="error">Need atleast 3 characters, 1 letters, 1 numbers, and 1 symbol <i class="fa-solid fa-circle-exclamation"></i></h6>
+                    <h6 class="error">Password is required <i class="fa-solid fa-circle-exclamation"></i></h6>
+                </div>
+                <div class="dialog-action">
+                    <button type="submit" id="btn" name="submit" class="startBtn">Start</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <!-- CONTENT -->
+
+        <div class="game-container" id="gameContainer">
+            <header>
+                <div class="title" id="title">4 PICS 1 WORD
+                    <button onclick="toggleBtnOn()" id="toggleOn" class="modesBtn"><i
+                            class="fa-solid fa-moon"></i></button>
+                    <button onclick="toggleBtnOff()" id="toggleOff" class="modesBtn"><i
+                            class="fa-solid fa-sun"></i></button>
+                </div>
+            </header>
+
+            <div class="subject-title" id="subjectTitle">Guess the Word</div>
+
+            <div class="content" id="finalScore">
+                <div class="question">
+                    <div class="banner">
+                        <h4>questions</h4>
+                        <!-- <h4 class="score" id="score">score</h4> -->
+                    </div>
+                    <div class="picture-container" id="images"></div>
+                </div>
+                <div class="answers-container" id="answers">
+                    <!-- <ul id="answers"></ul> -->
+                    <div class="preview-error">
+                        <p id="previewError"></p>
+                        <div class="preview-answer" id="previewAnwser"></div>
+                    </div>
+                    <div class="drag-container" id="dragContainer">
+                    </div>
+                    <div class="clear-btn-container">
+                        <button class="guess-btn" id="gstBtn">Guess</button>
+                        <button class="clear-btn" id="clrBtn">Clear</button>
+                    </div>
+                    <div class="clear-btn-container">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- LEADERBOARD -->
+        <div class="leaderboard-container" id="leaderboardContainer">
+            <div class="leaderboard-header">
+                <div class="game-name" id="gameName">4 PICS 1 WORD</div>
+                <div class="leaderboard-title" id="leaderboard-title">APPRECIATION</div>
+            </div>
+            <div class="leaderboard-contents">
+                <div class="first-place" id="firstPlace">
+                    <div class="first-place-number" id="first-place-number">Great!</div>
+                    <div class="first-place-img-container">
+                        <i class="fa-solid fa-crown"></i>
+                        <!-- <img src="phil.png" alt=""> -->
+                    </div>
+                    <div class="first-place-name" id="firstPlaceName"></div>
+                    <!-- <div class="first-place-score"><span>Score:</span> 3 / 3</div> -->
+                </div>
+                <!-- <div class="remaining-place" id="remainingPlace">
+                    <div class="remaining-place-number">TOP 2</div>
+                    <div class="remaining-place-img-container">
+                        <i class="fa-solid fa-crown"></i>
+                        <img src="daks.png" alt="">
+                    </div>
+                    <div class="remaining-place-name">NAME 2</div>
+                    <div class="remaining-place-score"><span>Score:</span> 2 / 3</div>
+                </div>
+                <div class="remaining-place">
+                    <div class="remaining-place-number">TOP 3</div>
+                    <div class="remaining-place-img-container">
+                        <i class="fa-solid fa-crown"></i>
+                        <img src="kulas.png" alt="">
+                    </div>
+                    <div class="remaining-place-name">NAME 3</div>
+                    <div class="remaining-place-score"><span>Score:</span> 2 / 3</div>
+                </div> -->
+            </div>
+        </div>
+    </main>
+
+
+    <footer>All rights reserved 2022.</footer>
+
+
+
+
+
+
+    <!-- SCRIPT -->
+    <script src="app.js"></script>
+</body>
+
+</html>
+
+<!-- 
+
+    MEMBERS:
+    - Elbra
+    - Jen
+    - Kylle
+    - Kulas
+    - Phil
+
+ -->
